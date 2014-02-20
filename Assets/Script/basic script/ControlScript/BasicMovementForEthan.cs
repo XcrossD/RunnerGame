@@ -19,7 +19,7 @@ public class BasicMovementForEthan : MonoBehaviour
 		hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
 		
 		// Set the weight of the shouting layer to 1.
-		anim.SetLayerWeight(1, 1f);
+		//anim.SetLayerWeight(1, 1f);
 	}
 	
 	
