@@ -33,8 +33,8 @@ public class LeftBackPanelBehavior : MonoBehaviour {
 		
 		if (handCollider.name == leftHandCollider.name){
 			//Debug.Log("left hand is detected is detect in left hand back panel");
-			robot.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-			robot.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+			//robot.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+			//robot.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
 		}
 		
 		

@@ -5,22 +5,26 @@ public class PlatformManager : MonoBehaviour {
 	
 	public Transform prefab;
 	public int numberOfObjects;
-	public int recycleOffset, minSize, maxSize;
-	public Vector3 startPosition;
+	public int recycleOffset;
+	public Vector3 startPosition, platformSize;
 	public GameObject runner;
 	public float runnerObjectDistance;
 	
-	private Vector3 nextPosition, currentDirection;
+	private Vector3 nextPosition, currentDirection, prevDirection;
 	private Queue<Transform> objectQueue;
-	private int initLimit,frameCountDeduction;
-	private Vector3[] Directions = new Vector3[] {new Vector3(1f,0f,0f), new Vector3(0f,0f,1f), new Vector3(0f,0f,-1f)};
-	
+	private int turnLimit,turnCount;
+	private Vector3[] Directions;
 	
 	// Use this for initialization
 	void Start () {
-		initLimit = 3;
-		frameCountDeduction = 0;
-		currentDirection = Directions[0];
+		turnCount = 0;
+		turnLimit = 5;
+		currentDirection = Vector3.forward;
+		prevDirection = currentDirection;
+		Directions = new Vector3[] {currentDirection, Vector3.Cross(currentDirection, Vector3.up), Vector3.Cross(Vector3.up, currentDirection)};
+
+		prefab.localScale = platformSize;
+
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		
 		for(int i=0; i<numberOfObjects; i++){
@@ -35,25 +39,43 @@ public class PlatformManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		runnerObjectDistance = (runner.transform.localPosition - objectQueue.Peek().localPosition).magnitude;
+
+		if(turnCount == turnLimit){
+
+			prevDirection = currentDirection;
+			currentDirection = Directions[Random.Range(0,2)];
+
+			if(prevDirection != currentDirection){
+				Directions = new Vector3[] {currentDirection, Vector3.Cross(currentDirection, Vector3.up), Vector3.Cross(Vector3.up, currentDirection)};
+			}
+
+			turnCount = 0;
+			turnLimit = Random.Range(numberOfObjects, numberOfObjects+2);
+		}
+
 		if (runnerObjectDistance > recycleOffset) {
 			Recycle();
+			turnCount++;
 		}
 	}
 	
 	private void Recycle () {
-		if(Time.frameCount/100 - frameCountDeduction < initLimit){
-			Transform o = objectQueue.Dequeue();
+			
+		Transform o = objectQueue.Dequeue();
+		o.rotation = Quaternion.LookRotation(currentDirection);
+
+		if(prevDirection != currentDirection && turnCount == 0){
+			nextPosition -= prevDirection * o.localScale.z/2;
+			nextPosition += prevDirection * o.localScale.x/2;
+			nextPosition += currentDirection * (o.localScale.z/2 - o.localScale.x/2);
 			o.localPosition = nextPosition;
-			nextPosition += currentDirection;
+			nextPosition += currentDirection * o.localScale.z;
 			objectQueue.Enqueue(o);
 		}else{
-			Transform o = objectQueue.Dequeue();
 			o.localPosition = nextPosition;
-			currentDirection = Directions[Random.Range(0,2)];
-			nextPosition += currentDirection;
+			nextPosition += currentDirection * o.localScale.z;
 			objectQueue.Enqueue(o);
-			frameCountDeduction += initLimit;
-			initLimit = Random.Range(minSize,maxSize);
 		}
+
 	}
 }

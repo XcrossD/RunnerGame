@@ -23,7 +23,7 @@ public class RightFrontPanelBehavior : MonoBehaviour {
 		if (handCollider.name == rightHandCollider.name){
 			//Debug.Log("right hand is detected is detect in right hand panel");
 			robot.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-			robot.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+			//robot.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 		}
 		
 		if (handCollider.name == leftHandCollider.name){

@@ -9,8 +9,8 @@ public class BasicMovementForEthan : MonoBehaviour
 	
 	
 	private Animator anim;              // Reference to the animator component.
-	private HashIDs hash;               // Reference to the HashIDs.
-	
+	private HashIDs hash;  				// Reference to the HashIDs.
+	//private bool touchingPlatform;
 	
 	void Awake ()
 	{
@@ -36,6 +36,9 @@ public class BasicMovementForEthan : MonoBehaviour
 	
 	void Update ()
 	{
+		//Move Ethan
+		transform.Translate(0f, 0f, 10f * Time.deltaTime);
+
 		// Cache the attention attracting input.
 		bool shout = Input.GetButtonDown("Attract");
 		
@@ -50,7 +53,7 @@ public class BasicMovementForEthan : MonoBehaviour
 		else gameObject.transform.GetComponent<CapsuleCollider>().height =2f;
 		
 	}
-	
+
 	
 	void MovementManagement (float horizontal, float vertical, bool sneaking)
 	{

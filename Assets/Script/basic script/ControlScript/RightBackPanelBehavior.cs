@@ -28,8 +28,8 @@ public class RightBackPanelBehavior : MonoBehaviour {
 	void OnTriggerStay(Collider handCollider){
 		if (handCollider.name == rightHandCollider.name){
 			//Debug.Log("Right hand is detected is detect in right hand back panel");
-			robot.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-			robot.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+			//robot.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+			//robot.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
 
 		}
 		
