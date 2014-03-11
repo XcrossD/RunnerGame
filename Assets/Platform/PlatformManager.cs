@@ -8,8 +8,8 @@ public class PlatformManager : MonoBehaviour {
 	public int recycleOffset;
 	public Vector3 startPosition, platformSize;
 	public GameObject runner;
-	public float runnerObjectDistance;
-	
+
+	private float runnerObjectDistance;
 	private Vector3 nextPosition, currentDirection, prevDirection;
 	private Queue<Transform> objectQueue;
 	private int turnLimit,turnCount;

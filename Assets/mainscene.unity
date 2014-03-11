@@ -851,9 +851,8 @@ MonoBehaviour:
   numberOfObjects: 5
   recycleOffset: 50
   startPosition: {x: 0, y: -1, z: 0}
-  platformSize: {x: 5, y: 1, z: 50}
+  platformSize: {x: 10, y: 1, z: 50}
   runner: {fileID: 877263257}
-  runnerObjectDistance: 0
 --- !u!1 &231988330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1463,49 @@ Transform:
   - {fileID: 1426360781}
   - {fileID: 279557707}
   m_Father: {fileID: 1397750953}
+--- !u!1 &480480249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 480480250}
+  - 114: {fileID: 480480251}
+  m_Layer: 0
+  m_Name: CoinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &480480250
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480480249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.0209312, y: 2.10715723, z: -23.9420948}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1483647047}
+--- !u!114 &480480251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480480249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f308154b936101b45956ec442511bb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 400000, guid: 27312a06fd52c7f4abc21e9b8aacee2e, type: 2}
+  numberOfObjects: 20
+  recycleOffset: 20
+  startPosition: {x: 0, y: 0, z: 0}
+  runner: {fileID: 877263257}
 --- !u!1 &486567939
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,6 +4528,7 @@ Transform:
   m_LocalPosition: {x: 12.8954525, y: .223220706, z: 29.0852089}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 480480250}
   - {fileID: 220812884}
   m_Father: {fileID: 0}
 --- !u!1 &1485509530
