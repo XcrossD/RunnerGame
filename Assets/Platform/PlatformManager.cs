@@ -6,11 +6,11 @@ public class PlatformManager : MonoBehaviour {
 	public Transform prefab;
 	public int numberOfObjects;
 	public int recycleOffset;
-	public Vector3 startPosition, platformSize;
+	public Vector3 startPosition, platformSize, currentDirection;
 	public GameObject runner;
 
 	private float runnerObjectDistance;
-	private Vector3 nextPosition, currentDirection, prevDirection;
+	private Vector3 nextPosition, prevDirection;
 	private Queue<Transform> objectQueue;
 	private int turnLimit,turnCount;
 	private Vector3[] Directions;
@@ -18,7 +18,7 @@ public class PlatformManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		turnCount = 0;
-		turnLimit = 5;
+		turnLimit = 3;
 		currentDirection = Vector3.forward;
 		prevDirection = currentDirection;
 		Directions = new Vector3[] {currentDirection, Vector3.Cross(currentDirection, Vector3.up), Vector3.Cross(Vector3.up, currentDirection)};
@@ -50,7 +50,7 @@ public class PlatformManager : MonoBehaviour {
 			}
 
 			turnCount = 0;
-			turnLimit = Random.Range(numberOfObjects, numberOfObjects+2);
+			turnLimit = Random.Range(3,5);
 		}
 
 		if (runnerObjectDistance > recycleOffset) {

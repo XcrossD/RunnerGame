@@ -7,6 +7,7 @@ public class CoinManager : MonoBehaviour {
 	public int numberOfObjects, recycleOffset;
 	public Vector3 startPosition;
 	public GameObject runner;
+	public PlatformManager platform;
 
 	private Queue<Transform> objectQueue;
 	private Vector3 nextPosition, currentDirection;
@@ -15,6 +16,7 @@ public class CoinManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		startPosition = new Vector3(0,0,20);
 		currentDirection = Vector3.forward;
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		
@@ -37,11 +39,12 @@ public class CoinManager : MonoBehaviour {
 		}
 	}
 
-	private void Recycle () {
-		
+	public void Recycle () {
+
+		currentDirection = platform.currentDirection;
 		Transform o = objectQueue.Dequeue();
 		o.localPosition = nextPosition;
-		nextPosition += currentDirection * o.localScale.z;
+		nextPosition += currentDirection * o.localScale.z * 3;
 		objectQueue.Enqueue(o);
 		
 	}
