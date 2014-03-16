@@ -3,7 +3,8 @@ using System.Collections;
 
 public class GetCoin : MonoBehaviour {
 
-	private CoinCount moneyCount;
+	//private CoinCount moneyCount;
+	public CoinManager coinManager;
 	
 	void Awake () {
 	}
@@ -12,14 +13,14 @@ public class GetCoin : MonoBehaviour {
 	}
 	
 	//destroy the the coin when controller charater touched it
-	void OnTriggerEnter (Collider other) {
+	void OnCollisionEnter () {
 		
-		if (other.tag == "GameController"){
-			Debug.Log(other.tag+"entered");
+		//if (other.tag == "GameController"){
+			//Debug.Log(other.tag+"entered");
 			
-			other.GetComponent<CoinCount>().money ++;	
-			GameObject.Destroy(gameObject, 0f);
-		}
+			//other.GetComponent<CoinCount>().money ++;	
+		coinManager.Recycle();
+		//}
 	}
 
 }
