@@ -15,7 +15,7 @@ public class GetCoin : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		
 		if (other.tag == "GameController"){
-			Debug.Log(other.tag+"entered");
+			Debug.Log(other.name+" entered");
 			
 			other.GetComponent<CoinCount>().money ++;	
 			GameObject.Destroy(gameObject, 0f);
