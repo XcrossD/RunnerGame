@@ -536,10 +536,10 @@ Transform:
   m_PrefabInternal: {fileID: 773850778}
   m_GameObject: {fileID: 125623226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .515831769, y: .536281824, z: 0}
-  m_LocalScale: {x: .588235259, y: .588235259, z: .588235199}
+  m_LocalPosition: {x: -.553747416, y: 2.11880064, z: -6.42407036}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 877263258}
+  m_Father: {fileID: 318380680}
 --- !u!114 &125623228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 322997173}
+  - {fileID: 125623227}
   m_Father: {fileID: 0}
 --- !u!1 &322997170
 GameObject:
@@ -2338,19 +2339,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 877263258}
+    m_TransformParent: {fileID: 318380680}
     m_Modifications:
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .515831769
+      value: -.553747416
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .536281824
+      value: 2.11880064
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.42407036
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2378,15 +2379,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalScale.x
-      value: .588235259
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalScale.y
-      value: .588235259
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_LocalScale.z
-      value: .588235199
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13200000, guid: 747f945f5e92b3a4b9b3176e5be2c778, type: 2}
       propertyPath: m_TabSize
@@ -2874,7 +2875,6 @@ Transform:
   - {fileID: 1125451493}
   - {fileID: 841375559}
   - {fileID: 23106483}
-  - {fileID: 125623227}
   m_Father: {fileID: 0}
 --- !u!114 &877263259
 MonoBehaviour:
@@ -2932,7 +2932,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &877263263
 MonoBehaviour:

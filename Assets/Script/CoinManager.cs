@@ -32,11 +32,11 @@ public class CoinManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		runnerObjectDistance = (runner.transform.localPosition - objectQueue.Peek().localPosition).magnitude;
+		//runnerObjectDistance = (runner.transform.localPosition - objectQueue.Peek().localPosition).magnitude;
 
-		if (runnerObjectDistance > recycleOffset) {
-			Recycle();
-		}
+		//if (runnerObjectDistance > recycleOffset) {
+		//	Recycle();
+		//}
 	}
 
 	public void Recycle () {
