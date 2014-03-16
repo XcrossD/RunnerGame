@@ -16,6 +16,7 @@ public class HashIDs : MonoBehaviour
 	public int aimWeightFloat;
 	public int angularSpeedFloat;
 	public int openBool;
+	public int jumpBool;
 	
 	
 	void Awake ()
@@ -32,5 +33,6 @@ public class HashIDs : MonoBehaviour
 		aimWeightFloat = Animator.StringToHash("AimWeight");
 		angularSpeedFloat = Animator.StringToHash("AngularSpeed");
 		openBool = Animator.StringToHash("Open");
+		jumpBool = Animator.StringToHash("Jump");
 	}
 }

@@ -39,26 +39,24 @@ public class BasicMovementForEthan : MonoBehaviour
 		//Move Ethan
 		transform.Translate(0f, 0f, 10f * Time.deltaTime);
 
-		// Cache the attention attracting input.
-		bool shout = Input.GetButtonDown("Attract");
-		
 		// Set the animator shouting parameter.
-		anim.SetBool(hash.shoutingBool, shout);
+		//anim.SetBool(hash.shoutingBool, Input.GetButtonDown("Attract"));
 
+		/*
 		//lower the body
 		if (Input.GetKey(KeyCode.LeftShift))
 		{
 			gameObject.transform.GetComponent<CapsuleCollider>().height =1.3f;
 		}
 		else gameObject.transform.GetComponent<CapsuleCollider>().height =2f;
-		
+		*/
 	}
 
 	
 	void MovementManagement (float horizontal, float vertical, bool sneaking)
 	{
 		// Set the sneaking parameter to the sneak input.
-		anim.SetBool(hash.sneakingBool, sneaking);
+		//anim.SetBool(hash.sneakingBool, sneaking);
 		
 		// If there is some axis input...
 		if(horizontal != 0f || vertical != 0f)
@@ -70,6 +68,16 @@ public class BasicMovementForEthan : MonoBehaviour
 		else
 			// Otherwise set the speed parameter to 0.
 			anim.SetFloat(hash.speedFloat, 0);
+
+		//perform jump and the animation
+		if (Input.GetButtonDown("Jump"))
+		{
+			anim.SetBool(hash.jumpBool, true);
+		}
+		else anim.SetBool(hash.jumpBool, false);
+
+
+
 	}
 	
 	
