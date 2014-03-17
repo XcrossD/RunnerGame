@@ -6,17 +6,17 @@ public class PlatformManager : MonoBehaviour {
 	public Transform prefab;
 	public int numberOfObjects;
 	public int recycleOffset;
-	public Vector3 startPosition, platformSize, currentDirection;
+	public Vector3 startPosition, nextPosition, platformSize, currentDirection;
 	public GameObject runner;
 
 	private float runnerObjectDistance;
-	private Vector3 nextPosition, prevDirection;
+	private Vector3 prevDirection;
 	private Queue<Transform> objectQueue;
 	private int turnLimit,turnCount;
 	private Vector3[] Directions;
 	
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		turnCount = 0;
 		turnLimit = 3;
 		currentDirection = Vector3.forward;
