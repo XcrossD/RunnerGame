@@ -6,17 +6,17 @@ public class PlatformManager : MonoBehaviour {
 	public Transform prefab;
 	public int numberOfObjects;
 	public int recycleOffset;
-	public Vector3 startPosition, nextPosition, platformSize, currentDirection;
+	public Vector3 startPosition, nextPosition, platformSize, currentDirection, prevDirection;
 	public GameObject runner;
+	public CoinManager coinManager;
 
 	private float runnerObjectDistance;
-	private Vector3 prevDirection;
 	private Queue<Transform> objectQueue;
 	private int turnLimit,turnCount;
 	private Vector3[] Directions;
 	
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		turnCount = 0;
 		turnLimit = 3;
 		currentDirection = Vector3.forward;
@@ -43,7 +43,7 @@ public class PlatformManager : MonoBehaviour {
 		if(turnCount == turnLimit){
 
 			prevDirection = currentDirection;
-			currentDirection = Directions[Random.Range(0,2)];
+			currentDirection = Directions[Random.Range(0,3)];
 
 			if(prevDirection != currentDirection){
 				Directions = new Vector3[] {currentDirection, Vector3.Cross(currentDirection, Vector3.up), Vector3.Cross(Vector3.up, currentDirection)};
@@ -69,11 +69,13 @@ public class PlatformManager : MonoBehaviour {
 			nextPosition += prevDirection * o.localScale.x/2;
 			nextPosition += currentDirection * (o.localScale.z/2 - o.localScale.x/2);
 			o.localPosition = nextPosition;
+			coinManager.Spawn (o.localPosition);
 			nextPosition += currentDirection * o.localScale.z;
 			objectQueue.Enqueue(o);
 		}else{
 			o.localPosition = nextPosition;
 			nextPosition += currentDirection * o.localScale.z;
+			coinManager.Spawn (o.localPosition);
 			objectQueue.Enqueue(o);
 		}
 

@@ -921,6 +921,7 @@ MonoBehaviour:
   platformSize: {x: 10, y: 1, z: 50}
   currentDirection: {x: 0, y: 0, z: 0}
   runner: {fileID: 877263257}
+  coinManager: {fileID: 480480251}
 --- !u!1 &231988330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 220812885}
   coin: {fileID: 400000, guid: 27312a06fd52c7f4abc21e9b8aacee2e, type: 2}
-  numberOfObjects: 20
+  numberOfObjects: 5
 --- !u!1 &486567939
 GameObject:
   m_ObjectHideFlags: 0
