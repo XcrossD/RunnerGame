@@ -920,6 +920,7 @@ MonoBehaviour:
   nextPosition: {x: 0, y: 0, z: 0}
   platformSize: {x: 10, y: 1, z: 50}
   currentDirection: {x: 0, y: 0, z: 0}
+  prevDirection: {x: 0, y: 0, z: 0}
   runner: {fileID: 877263257}
   coinManager: {fileID: 480480251}
 --- !u!1 &231988330
@@ -4703,6 +4704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 480480250}
+  - {fileID: 1943114829}
   - {fileID: 220812884}
   m_Father: {fileID: 0}
 --- !u!1 &1485509530
@@ -5722,6 +5724,47 @@ Transform:
   m_Children:
   - {fileID: 2097644319}
   m_Father: {fileID: 1397750953}
+--- !u!1 &1943114828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1943114829}
+  - 114: {fileID: 1943114830}
+  m_Layer: 0
+  m_Name: KeyMapping
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1943114829
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943114828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.0517569, y: 5.07494545, z: 521.275879}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1483647047}
+--- !u!114 &1943114830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943114828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9a7c86f88a57a4d90bb9438acad4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runner: {fileID: 877263257}
+  newPositionLeft: {x: 0, y: 0, z: 0}
+  newPositionRight: {x: 0, y: 0, z: 0}
 --- !u!1 &2020859689
 GameObject:
   m_ObjectHideFlags: 0

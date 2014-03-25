@@ -37,7 +37,7 @@ public class BasicMovementForEthan : MonoBehaviour
 	void Update ()
 	{
 		//Move Ethan
-		transform.Translate(0f, 0f, 10f * Time.deltaTime);
+		rigidbody.velocity = new Vector3(0,0,10);
 
 		// Set the animator shouting parameter.
 		//anim.SetBool(hash.shoutingBool, Input.GetButtonDown("Attract"));
