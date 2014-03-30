@@ -4,9 +4,10 @@ using System.Collections;
 public class KeyMapping : MonoBehaviour {
 
 	public GameObject runner;
-	//public PlatformManager pM;
+	public PlatformManager pM;
 	public Vector3 newPositionLeft, newPositionRight, oldPosition, newPosition;
-	public bool isRight, isLeft;
+	public float turnPosition;
+	public bool isRight, isLeft, turnToZ;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class KeyMapping : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		PositionChanging();
+		RotationChanging();
 
 	}
 
@@ -70,6 +72,50 @@ public class KeyMapping : MonoBehaviour {
 				isLeft = false;
 			}else{
 				isRight = true;
+			}
+		}
+	}
+
+	void RotationChanging(){
+		if(Vector3.Dot(runner.transform.forward, Vector3.forward) == 0){
+			turnPosition = pM.nextPosition.z;
+			turnToZ = true;
+			if(isLeft){
+				turnPosition += Vector3.Cross(Vector3.up,pM.currentDirection).x * 2.5f;
+			}else{
+				turnPosition -= Vector3.Cross(Vector3.up,pM.currentDirection).x * 2.5f;
+			}
+		}else{
+			turnPosition = pM.nextPosition.x;
+			turnToZ = false;
+			if(isLeft){
+				turnPosition += Vector3.Cross(Vector3.up,pM.currentDirection).z * 2.5f;
+			}else{
+				turnPosition -= Vector3.Cross(Vector3.up,pM.currentDirection).z * 2.5f;
+			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.A)){
+			if(turnToZ){
+				if(runner.transform.localPosition.z == turnPosition){
+					runner.transform.Rotate(Vector3.up, -90);
+				}
+			}else{
+				if(runner.transform.localPosition.x == turnPosition){
+					runner.transform.Rotate(Vector3.up, -90);
+				}
+			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.D)){
+			if(turnToZ){
+				if(runner.transform.localPosition.z == turnPosition){
+					runner.transform.Rotate(Vector3.up, 90);
+				}
+			}else{
+				if(runner.transform.localPosition.x == turnPosition){
+					runner.transform.Rotate(Vector3.up, 90);
+				}
 			}
 		}
 	}

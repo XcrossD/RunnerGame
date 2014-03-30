@@ -21,6 +21,8 @@ public class PlatformManager : MonoBehaviour {
 		turnLimit = 3;
 		currentDirection = Vector3.forward;
 		prevDirection = currentDirection;
+		startPosition = runner.transform.localPosition;
+		startPosition.y -= 1f;
 		Directions = new Vector3[] {currentDirection, Vector3.Cross(currentDirection, Vector3.up), Vector3.Cross(Vector3.up, currentDirection)};
 
 		prefab.localScale = platformSize;

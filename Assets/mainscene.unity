@@ -7390,12 +7390,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runner: {fileID: 877263257}
+  pM: {fileID: 220812885}
   newPositionLeft: {x: 0, y: 0, z: 0}
   newPositionRight: {x: 0, y: 0, z: 0}
   oldPosition: {x: 0, y: 0, z: 0}
   newPosition: {x: 0, y: 0, z: 0}
+  turnPosition: 0
   isRight: 0
   isLeft: 0
+  turnToZ: 0
 --- !u!1 &2003020518
 GameObject:
   m_ObjectHideFlags: 0
