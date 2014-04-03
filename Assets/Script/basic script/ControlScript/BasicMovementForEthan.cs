@@ -70,12 +70,11 @@ public class BasicMovementForEthan : MonoBehaviour
 			anim.SetFloat(hash.speedFloat, 0);
 
 		//perform jump and the animation
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButton("Jump"))
 		{
 			anim.SetBool(hash.jumpBool, true);
 		}
 		else anim.SetBool(hash.jumpBool, false);
-
 
 
 	}
