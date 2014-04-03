@@ -25,6 +25,7 @@ public class TrunkBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Rotate();
+
 	}
 	
 	
@@ -39,15 +40,36 @@ public class TrunkBehavior : MonoBehaviour {
 		{
 			hash = others.GetComponent<HashIDs>();
 			anim = others.GetComponent<Animator>();
-			//Killer the player
-			anim.SetBool(hash.deadBool, true);
 
-			//stop the game here
+			//check jump
+			if (anim.GetBool(hash.jumpBool)==false)
+			{
+				//Killer the player
+				anim.SetBool(hash.deadBool, true);
+			}
+
+
 
 		}
 
 	}
+
 	void OnTriggerStay(Collider others){
+		// If the colliding gameobject is the player...
+		if(others.gameObject.tag == "GameController")
+		{
+			hash = others.GetComponent<HashIDs>();
+			anim = others.GetComponent<Animator>();
+			//Killer the player
+			anim.SetBool(hash.deadBool, false);
+			
+			
+			
+		}
+	}
+
+	/*
+	void OnTriggerExit(Collider others){
 		if(others.gameObject.tag == "GameController")
 		{
 			hash = others.GetComponent<HashIDs>();
@@ -58,9 +80,8 @@ public class TrunkBehavior : MonoBehaviour {
 			//stop the game here
 			
 		}
-
-
-
 	}
+
+*/
 	
 }

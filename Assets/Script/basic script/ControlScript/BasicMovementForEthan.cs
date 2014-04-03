@@ -16,7 +16,7 @@ public class BasicMovementForEthan : MonoBehaviour
 	{
 		// Setting up the references.
 		anim = GetComponent<Animator>();
-		hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
+		hash = GetComponent<HashIDs>();
 		
 		// Set the weight of the shouting layer to 1.
 		//anim.SetLayerWeight(1, 1f);
@@ -55,6 +55,7 @@ public class BasicMovementForEthan : MonoBehaviour
 	
 	void MovementManagement (float horizontal, float vertical, bool sneaking)
 	{
+		/*
 		// Set the sneaking parameter to the sneak input.
 		//anim.SetBool(hash.sneakingBool, sneaking);
 		
@@ -68,11 +69,13 @@ public class BasicMovementForEthan : MonoBehaviour
 		else
 			// Otherwise set the speed parameter to 0.
 			anim.SetFloat(hash.speedFloat, 0);
+*/
 
 		//perform jump and the animation
-		if (Input.GetButton("Jump"))
+		if (Input.GetButton("Jump") == true)
 		{
 			anim.SetBool(hash.jumpBool, true);
+
 		}
 		else anim.SetBool(hash.jumpBool, false);
 
