@@ -2991,7 +2991,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400058, guid: 4b08324c645c32a4fa66c026c6653210, type: 2}
   m_PrefabInternal: {fileID: 934850133}
   m_GameObject: {fileID: 719565158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
   m_LocalPosition: {x: -0, y: 0, z: -1.82499027}
   m_LocalScale: {x: 21.8400002, y: 10, z: 11.6100006}
   m_Children: []
@@ -3838,6 +3838,7 @@ MonoBehaviour:
   rightHandCollider: {fileID: 855083856}
   leftHandCollider: {fileID: 603015133}
   robot: {fileID: 877263257}
+  kM: {fileID: 0}
 --- !u!23 &872143312
 Renderer:
   m_ObjectHideFlags: 0
@@ -4238,6 +4239,14 @@ Prefab:
     - target: {fileID: 100062, guid: 4b08324c645c32a4fa66c026c6653210, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400058, guid: 4b08324c645c32a4fa66c026c6653210, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .707106829
+      objectReference: {fileID: 0}
+    - target: {fileID: 400058, guid: 4b08324c645c32a4fa66c026c6653210, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .707106829
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b08324c645c32a4fa66c026c6653210, type: 2}
@@ -5980,6 +5989,7 @@ MonoBehaviour:
   rightHandCollider: {fileID: 855083856}
   leftHandCollider: {fileID: 603015133}
   robot: {fileID: 877263257}
+  kM: {fileID: 0}
 --- !u!23 &1426360783
 Renderer:
   m_ObjectHideFlags: 0
@@ -6361,6 +6371,7 @@ MonoBehaviour:
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
   runner: {fileID: 877263257}
+  kM: {fileID: 0}
 --- !u!1 &1558036778
 GameObject:
   m_ObjectHideFlags: 0

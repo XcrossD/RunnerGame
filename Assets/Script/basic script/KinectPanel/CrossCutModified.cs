@@ -13,6 +13,8 @@ public class CrossCutModified : MonoBehaviour {
 	public GameObject rightHand;
 	public GameObject runner;
 
+	public KeyMapping kM;
+
 	
 	// Use this for initialization
 	void Start () 
@@ -62,7 +64,8 @@ public class CrossCutModified : MonoBehaviour {
 		float distance = Vector3.Distance(leftHandPosEnter, leftHandPosExit);
 		if (distance > 1f)
 		{
-			runner.transform.Rotate(Vector3.up, -90);
+			//runner.transform.Rotate(Vector3.up, -90);
+			kM.RotationChanging(false);
 		}
 	}
 
@@ -71,7 +74,8 @@ public class CrossCutModified : MonoBehaviour {
 		float distance = Vector3.Distance(rightHandPosEnter, rightHandPosExit);
 		if (distance > 1f)
 		{
-			runner.transform.Rotate(Vector3.up, 90);
+			//runner.transform.Rotate(Vector3.up, 90);
+			kM.RotationChanging(true);
 		}
 
 

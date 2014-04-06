@@ -17,12 +17,12 @@ public class KeyMapping : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		PositionChanging();
-		RotationChanging();
+		//PositionChanging();
+		//RotationChanging();
 
 	}
 
-	void PositionChanging(){
+	public void PositionChanging(bool inputRight){
 
 		oldPosition = runner.transform.localPosition;
 		if(Vector3.Dot(runner.transform.forward, Vector3.forward) == 0){
@@ -57,7 +57,7 @@ public class KeyMapping : MonoBehaviour {
 			}
 		}
 		
-		if(Input.GetKeyDown(KeyCode.Q)){
+		if(!inputRight){
 			runner.rigidbody.MovePosition(newPositionLeft);
 			if(isRight){
 				isRight = false;
@@ -66,7 +66,7 @@ public class KeyMapping : MonoBehaviour {
 			}
 
 		}
-		if(Input.GetKeyDown(KeyCode.E)){
+		if(inputRight){
 			runner.rigidbody.MovePosition(newPositionRight);
 			if(isLeft){
 				isLeft = false;
@@ -76,7 +76,7 @@ public class KeyMapping : MonoBehaviour {
 		}
 	}
 
-	void RotationChanging(){
+	public void RotationChanging(bool inputRight){
 		if(Vector3.Dot(runner.transform.forward, Vector3.forward) == 0){
 			turnPosition = pM.nextPosition.z;
 			turnToZ = true;
@@ -95,7 +95,7 @@ public class KeyMapping : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetKeyDown(KeyCode.A)){
+		if(!inputRight){
 			if(turnToZ){
 				if(runner.transform.localPosition.z == turnPosition){
 					runner.transform.Rotate(Vector3.up, -90);
@@ -107,7 +107,7 @@ public class KeyMapping : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetKeyDown(KeyCode.D)){
+		if(inputRight){
 			if(turnToZ){
 				if(runner.transform.localPosition.z == turnPosition){
 					runner.transform.Rotate(Vector3.up, 90);
