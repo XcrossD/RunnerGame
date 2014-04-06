@@ -6283,6 +6283,7 @@ MonoBehaviour:
   targetX: 301
   targetY: 635
   rightIsIn: 0
+  Zpos: 0
 --- !u!114 &1557930105
 MonoBehaviour:
   m_ObjectHideFlags: 0

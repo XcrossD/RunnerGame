@@ -17,6 +17,8 @@ public class CursorControl : MonoBehaviour {
 	float spineX;
 	float spineY;
 
+	public float Zpos = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -64,6 +66,8 @@ public class CursorControl : MonoBehaviour {
 	{
 		if (other.name == "right_hand") 
 		{
+			Zpos=other.transform.position.z;
+
 			sensitivityX = Screen.width;
 			sensitivityY = Screen.height;
 

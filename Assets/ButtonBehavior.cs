@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ButtonBehavior : MonoBehaviour {
 
-	public bool showButtons = true;
+	public bool showButtons = true; //same as started
 
 
 	public Texture2D playButton;
@@ -23,11 +23,20 @@ public class ButtonBehavior : MonoBehaviour {
 	MouseControl mouseControlScript;
 	int XposCursor = 0;
 	int YposCursor = 0;
+	float ZminPos = 100;
+	float ZcurrentPos =0;
+
+	//plyabutton position
+	float xPlayPos = 100;
+	float yPlayPos = 100;
+	float zdiff = 0;
+	float enlargefactor = 1;
 
 
 	//game objects
 	public GameObject player;
 	public GameObject managers;
+
 
 
 	// Use this for initialization
@@ -41,6 +50,9 @@ public class ButtonBehavior : MonoBehaviour {
 
 		//button initialize
 		buttonSizeX = Mathf.Min( Screen.width/4, Screen.height/4);
+		xPlayPos = buttonSizeX/2*7;
+		yPlayPos = buttonSizeX/2;
+		enlargefactor = zdiff +1;
 
 		//stop things before start button is pressed
 		if (showButtons)
@@ -60,20 +72,26 @@ public class ButtonBehavior : MonoBehaviour {
 		//check whether the cursor in entering the button play
 		XposCursor=cursorControlScript.cursorX;
 		YposCursor=cursorControlScript.cursorY;
-		if (XposCursor > buttonSizeX/2 && (XposCursor < (buttonSizeX/2+buttonSizeX) ) )
+		if (XposCursor > xPlayPos && (XposCursor < (xPlayPos+buttonSizeX) ) )
 			{
-			if (YposCursor > buttonSizeX/2 && (YposCursor < (buttonSizeX/2+buttonSizeX) ) )
+			if (YposCursor > yPlayPos && (YposCursor < (yPlayPos+buttonSizeX) ) )
 				{
 				//indicate the cursor is on play button
 					onPlay=true;
-					EnableAll();
-					showButtons=false;
+					PressCheck();
 				}
 			}
 		//disable the enlarge button behavior
-		else onPlay=false;
+		else 
+		{
+			onPlay=false;
+			ZcurrentPos=0;
+			ZminPos=100;
+		}
 
-
+		if (Input.GetKeyDown("'")){
+			showButtons=true;
+		}
 
 
 	}
@@ -87,10 +105,10 @@ public class ButtonBehavior : MonoBehaviour {
 		if (showPlayButton == true){
 			//draw the playbutton
 			if (onPlay){
-				GUI.DrawTexture(new Rect(buttonSizeX/2, buttonSizeX/2, buttonSizeX*1.3f, buttonSizeX*1.3f),playButton);
+				GUI.DrawTexture(new Rect(xPlayPos, yPlayPos, buttonSizeX*enlargefactor, buttonSizeX*enlargefactor),playButton);
 			}
 			else 
-			GUI.DrawTexture(new Rect(buttonSizeX/2, buttonSizeX/2, buttonSizeX, buttonSizeX),playButton);
+				GUI.DrawTexture(new Rect(xPlayPos, yPlayPos, buttonSizeX, buttonSizeX),playButton);
 		}
 
 		if (showOptionButton == true){
@@ -106,8 +124,10 @@ public class ButtonBehavior : MonoBehaviour {
 	//stop all the game objects to pause the game
 	void StopAll(){
 		player.GetComponent<BasicMovementForEthan>().enabled=false;
+		player.rigidbody.velocity= new Vector3(0,0,0);
 		player.GetComponent<Animator>().enabled=false;
 		managers.SetActive(false);
+
 	}
 
 
@@ -136,6 +156,23 @@ public class ButtonBehavior : MonoBehaviour {
 		showOptionButton=false;
 		showPlayButton=false;
 		mouseControlScript.enabled=false;
+
+	}
+
+	void PressCheck(){
+
+		ZcurrentPos = cursorControlScript.Zpos;
+
+		if (ZcurrentPos < ZminPos)
+		{
+			ZminPos = ZcurrentPos;
+		}
+		zdiff = ZcurrentPos-ZminPos;
+		if (zdiff > 0.2f)
+		{
+			showButtons=false;
+		}
+
 
 	}
 
