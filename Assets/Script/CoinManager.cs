@@ -13,7 +13,6 @@ public class CoinManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start (){
-		Debug.Log("Start called");
 
 	}
 	

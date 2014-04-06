@@ -49,8 +49,8 @@ public class ButtonBehavior : MonoBehaviour {
 	void Update () {
 
 		//button initialize
-		buttonSizeX = Mathf.Min( Screen.width/4, Screen.height/4);
-		xPlayPos = buttonSizeX/2*7;
+		buttonSizeX = Mathf.Min( Screen.width/3, Screen.height/3);
+		xPlayPos = buttonSizeX/2*5;
 		yPlayPos = buttonSizeX/2;
 		enlargefactor = zdiff +1;
 
@@ -123,9 +123,9 @@ public class ButtonBehavior : MonoBehaviour {
 
 	//stop all the game objects to pause the game
 	void StopAll(){
-		player.GetComponent<BasicMovementForEthan>().enabled=false;
+		//player.GetComponent<BasicMovementForEthan>().enabled=false;
 		player.rigidbody.velocity= new Vector3(0,0,0);
-		player.GetComponent<Animator>().enabled=false;
+		//player.GetComponent<Animator>().enabled=false;
 		managers.SetActive(false);
 
 	}
@@ -134,9 +134,11 @@ public class ButtonBehavior : MonoBehaviour {
 	//enable the game object to work
 	void EnableAll(){
 
-		player.GetComponent<BasicMovementForEthan>().enabled=true;
-		player.GetComponent<Animator>().enabled=true;
+		//player.GetComponent<BasicMovementForEthan>().enabled=true;
+		//player.GetComponent<Animator>().enabled=true;
+		player.GetComponent<BasicMovementForEthan>().started=true;
 		managers.SetActive(true);
+
 
 	}
 

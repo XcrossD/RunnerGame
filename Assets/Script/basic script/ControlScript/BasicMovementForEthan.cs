@@ -6,7 +6,8 @@ public class BasicMovementForEthan : MonoBehaviour
 	
 	public float turnSmoothing = 15f;   // A smoothing value for turning the player.
 	public float speedDampTime = 0.1f;  // The damping for the speed parameter
-	
+
+	public bool started = false;
 	
 	private Animator anim;              // Reference to the animator component.
 	private HashIDs hash;  				// Reference to the HashIDs.
@@ -37,7 +38,13 @@ public class BasicMovementForEthan : MonoBehaviour
 	void Update ()
 	{
 		//Move Ethan
-		rigidbody.velocity = new Vector3(0,0,10);
+		rigidbody.velocity = new Vector3(0,0,0);
+
+		if (started || (Input.GetKeyDown("9"))){
+			Debug.Log ("started");
+			anim.SetFloat(hash.speedFloat, 5.5f);
+			rigidbody.velocity = new Vector3(0,0,10);
+		}
 
 		// Set the animator shouting parameter.
 		//anim.SetBool(hash.shoutingBool, Input.GetButtonDown("Attract"));
