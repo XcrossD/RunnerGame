@@ -26,7 +26,7 @@ public class LeftFrontPanelBehavior : MonoBehaviour {
 	}
 	
 	//command from the hand detection
-	void OnTriggerStay(Collider handCollider){
+	void OnTriggerEnter(Collider handCollider){
 		if (handCollider.name == rightHandCollider.name){
 			//Debug.Log("Right hand is detected is detect in left hand panel");
 

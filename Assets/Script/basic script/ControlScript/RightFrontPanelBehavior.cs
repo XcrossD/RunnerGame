@@ -20,7 +20,7 @@ public class RightFrontPanelBehavior : MonoBehaviour {
 	}
 	
 	//command from the hand detection
-	void OnTriggerStay(Collider handCollider){
+	void OnTriggerEnter(Collider handCollider){
 		if (handCollider.name == rightHandCollider.name){
 			//Debug.Log("right hand is detected is detect in right hand panel");
 			//robot.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
