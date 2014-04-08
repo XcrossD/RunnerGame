@@ -6,19 +6,25 @@ public class KeyMapping : MonoBehaviour {
 	public GameObject runner;
 	public PlatformManager pM;
 	public Vector3 newPositionLeft, newPositionRight, oldPosition, newPosition;
-	public float turnPosition;
-	public bool isRight, isLeft, turnToZ;
+	public float turnPosition, checkPosition;
+	public bool isRight, isLeft, inputRight;
+	public Quaternion rightRotation, leftRotation;
 
 	// Use this for initialization
 	void Start () {
 		isRight = false;
 		isLeft = false;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//PositionChanging();
 		//RotationChanging();
+		if(Input.GetKeyDown(KeyCode.Q)){
+			inputRight = false;
+			RotationChanging(inputRight);
+		}
 
 	}
 
@@ -57,7 +63,7 @@ public class KeyMapping : MonoBehaviour {
 			}
 		}
 		
-		if(!inputRight){
+		if(!inputRight || Input.GetKeyDown(KeyCode.A)){
 			runner.rigidbody.MovePosition(newPositionLeft);
 			if(isRight){
 				isRight = false;
@@ -66,7 +72,7 @@ public class KeyMapping : MonoBehaviour {
 			}
 
 		}
-		if(inputRight){
+		if(inputRight || Input.GetKeyDown(KeyCode.D)){
 			runner.rigidbody.MovePosition(newPositionRight);
 			if(isLeft){
 				isLeft = false;
@@ -75,48 +81,24 @@ public class KeyMapping : MonoBehaviour {
 			}
 		}
 	}
+	
 
 	public void RotationChanging(bool inputRight){
-		if(Vector3.Dot(runner.transform.forward, Vector3.forward) == 0){
-			turnPosition = pM.nextPosition.z;
-			turnToZ = true;
-			if(isLeft){
-				turnPosition += Vector3.Cross(Vector3.up,pM.currentDirection).x * 2.5f;
-			}else{
-				turnPosition -= Vector3.Cross(Vector3.up,pM.currentDirection).x * 2.5f;
-			}
-		}else{
-			turnPosition = pM.nextPosition.x;
-			turnToZ = false;
-			if(isLeft){
-				turnPosition += Vector3.Cross(Vector3.up,pM.currentDirection).z * 2.5f;
-			}else{
-				turnPosition -= Vector3.Cross(Vector3.up,pM.currentDirection).z * 2.5f;
-			}
-		}
-
+		BasicMovementForEthan ethan = runner.GetComponent<BasicMovementForEthan>();
 		if(!inputRight){
-			if(turnToZ){
-				if(runner.transform.localPosition.z == turnPosition){
-					runner.transform.Rotate(Vector3.up, -90);
-				}
-			}else{
-				if(runner.transform.localPosition.x == turnPosition){
-					runner.transform.Rotate(Vector3.up, -90);
-				}
-			}
-		}
-
-		if(inputRight){
-			if(turnToZ){
-				if(runner.transform.localPosition.z == turnPosition){
-					runner.transform.Rotate(Vector3.up, 90);
-				}
-			}else{
-				if(runner.transform.localPosition.x == turnPosition){
-					runner.transform.Rotate(Vector3.up, 90);
-				}
-			}
+		
+			Debug.Log("turn left");
+			Vector3 newSpeed = Vector3.Cross (ethan.speed,new Vector3(0,1,0));
+			runner.rigidbody.MoveRotation(Quaternion.FromToRotation(ethan.speed,newSpeed));
+			Debug.Log(ethan.speed);
+			Debug.Log (newSpeed);
+			Debug.Log (Quaternion.FromToRotation(ethan.speed,newSpeed));
+			ethan.speed = newSpeed;
+			
+		}else{
+			Vector3 newSpeed = Vector3.Cross (new Vector3(0,1,0),ethan.speed);
+			runner.rigidbody.MoveRotation(Quaternion.FromToRotation(ethan.speed,newSpeed));
+			ethan.speed = newSpeed;
 		}
 	}
 }

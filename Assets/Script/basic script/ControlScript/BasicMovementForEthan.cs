@@ -8,6 +8,9 @@ public class BasicMovementForEthan : MonoBehaviour
 	public float speedDampTime = 0.1f;  // The damping for the speed parameter
 
 	public bool started = false;
+
+	public Vector3 speed;
+	public KeyMapping kM;
 	
 	private Animator anim;              // Reference to the animator component.
 	private HashIDs hash;  				// Reference to the HashIDs.
@@ -21,6 +24,7 @@ public class BasicMovementForEthan : MonoBehaviour
 		
 		// Set the weight of the shouting layer to 1.
 		//anim.SetLayerWeight(1, 1f);
+		speed = new Vector3(0,0,10);
 	}
 	
 	
@@ -33,17 +37,19 @@ public class BasicMovementForEthan : MonoBehaviour
 		
 		MovementManagement(h, v, sneak);
 	}
-	
+	bool keyboardstart = false;
 	
 	void Update ()
 	{
+
 		//Move Ethan
 		rigidbody.velocity = new Vector3(0,0,0);
 
-		if (started || (Input.GetKeyDown("9"))){
+		if (started || (Input.GetKeyDown("9")) || keyboardstart){
+			keyboardstart=true;
 			Debug.Log ("started");
 			anim.SetFloat(hash.speedFloat, 5.5f);
-			rigidbody.velocity = new Vector3(0,0,10);
+			rigidbody.velocity = speed;
 		}
 
 		// Set the animator shouting parameter.
