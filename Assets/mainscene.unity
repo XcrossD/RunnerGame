@@ -1649,7 +1649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b38b580e9f362a48bad136a28b7b225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 1.5
 --- !u!131 &322997172
 GUITexture:
   m_ObjectHideFlags: 0
@@ -1867,7 +1866,7 @@ Rigidbody:
   m_Mass: 500
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -7233,6 +7232,50 @@ SkinnedMeshRenderer:
     m_Center: {x: -.35433951, y: -.118368067, z: -.00497664511}
     m_Extent: {x: .162152499, y: .0578835234, z: .152471408}
   m_DirtyAABB: 0
+--- !u!1 &1140470619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1140470620}
+  - 114: {fileID: 1140470621}
+  m_Layer: 0
+  m_Name: ObstaclesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140470620
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140470619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1483647047}
+--- !u!114 &1140470621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140470619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f0ba4090ac8a34192ce20c84d3eeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pM: {fileID: 220812885}
+  runner: {fileID: 877263257}
+  trunk: {fileID: 400000, guid: df0280d8ad354be49abb64a00e35d169, type: 2}
+  time: 0
+  timeTime: 0
+  location: {x: 0, y: 0, z: 0}
 --- !u!1 &1148676141
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,7 +8025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: df0280d8ad354be49abb64a00e35d169, type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: df0280d8ad354be49abb64a00e35d169, type: 2}
       propertyPath: m_Enabled
@@ -8674,6 +8717,7 @@ Transform:
   m_Children:
   - {fileID: 480480250}
   - {fileID: 1943114829}
+  - {fileID: 1140470620}
   - {fileID: 220812884}
   m_Father: {fileID: 0}
 --- !u!1 &1485509530
@@ -10403,7 +10447,8 @@ MonoBehaviour:
   checkPosition: 0
   isRight: 0
   isLeft: 0
-  inputRight: 0
+  rotationInputRight: 0
+  positionInputRight: 0
   rightRotation: {x: 0, y: 0, z: 0, w: 0}
   leftRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1995905267
