@@ -466,13 +466,13 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110290459}
-      second:
-      - {fileID: 110184413}
-    data:
       first: {fileID: 0}
       second:
       - {fileID: 110190555}
+    data:
+      first: {fileID: 110290459}
+      second:
+      - {fileID: 110184413}
     data:
       first: {fileID: 110229109}
       second:

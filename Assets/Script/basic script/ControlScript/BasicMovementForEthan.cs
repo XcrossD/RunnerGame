@@ -11,6 +11,7 @@ public class BasicMovementForEthan : MonoBehaviour
 
 	public Vector3 speed;
 	public KeyMapping kM;
+	public ObstaclesManager oM;
 	
 	private Animator anim;              // Reference to the animator component.
 	private HashIDs hash;  				// Reference to the HashIDs.
@@ -46,6 +47,9 @@ public class BasicMovementForEthan : MonoBehaviour
 		rigidbody.velocity = new Vector3(0,0,0);
 
 		if (started || (Input.GetKeyDown("9")) || keyboardstart){
+			if(!keyboardstart){
+				oM.time = Time.time + 5f;
+			}
 			keyboardstart=true;
 			Debug.Log ("started");
 			anim.SetFloat(hash.speedFloat, 5.5f);

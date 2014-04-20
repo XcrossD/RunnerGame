@@ -11,13 +11,13 @@ public class ObstaclesManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		time = 5.0f;
+		time = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timeTime = Time.time;
-		if(Time.time > time){
+		if(Time.time > time && time != 0){
 			appear ();
 			time += Random.Range(3,8);
 		}
