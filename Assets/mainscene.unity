@@ -4536,6 +4536,7 @@ MonoBehaviour:
   started: 0
   speed: {x: 0, y: 0, z: 0}
   kM: {fileID: 1943114830}
+  oM: {fileID: 1140470621}
 --- !u!95 &877263265
 Animator:
   serializedVersion: 2
@@ -6548,6 +6549,10 @@ Prefab:
       propertyPath: kM
       value: 
       objectReference: {fileID: 1943114830}
+    - target: {fileID: 11400008, guid: c472ffac096e5004fa8586d2b4caac63, type: 2}
+      propertyPath: oM
+      value: 
+      objectReference: {fileID: 1140470621}
     m_RemovedComponents:
     - {fileID: 5400000, guid: c472ffac096e5004fa8586d2b4caac63, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c472ffac096e5004fa8586d2b4caac63, type: 2}
