@@ -12,7 +12,7 @@ public class PlatformManager : MonoBehaviour {
 
 	private float runnerObjectDistance;
 	private Queue<Transform> objectQueue;
-	private int turnLimit,turnCount;
+	public int turnLimit,turnCount;
 	private Vector3[] Directions;
 	
 	// Use this for initialization
