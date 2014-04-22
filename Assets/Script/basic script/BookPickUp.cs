@@ -7,12 +7,15 @@ public class BookPickUp : MonoBehaviour
 	private GameObject player;                      // Reference to the player.
 	private PlayerInventory playerInventory;        // Reference to the player's inventory.
 	
-	
+	private SceneFadeInOut gameoverscript;
+	public GameObject fader;
+
 	void Awake ()
 	{
 		// Setting up the references.
 		player = GameObject.FindGameObjectWithTag(Tags.gameController);
 		playerInventory = player.GetComponent<PlayerInventory>();
+		gameoverscript = fader.GetComponent<SceneFadeInOut>();
 	}
 	
 	
@@ -28,6 +31,8 @@ public class BookPickUp : MonoBehaviour
 			
 			// ... and destroy this gameobject.
 			Destroy(gameObject);
+			gameoverscript.EndScene();
+
 		}
 	}
 }
