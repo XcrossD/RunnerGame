@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 400000, guid: 16d872506c101284c93e6124ad9f7033, type: 2}
   trigger: {fileID: 400000, guid: ec04787209a4de04489248aaed257140, type: 2}
-  numberOfObjects: 1
+  numberOfObjects: 5
   recycleOffset: 50
   startPosition: {x: 0, y: -1, z: 0}
   nextPosition: {x: 0, y: 0, z: 0}
@@ -4195,7 +4195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &856443979
 Renderer:
   m_ObjectHideFlags: 0
@@ -10862,6 +10862,10 @@ Prefab:
     - target: {fileID: 400000, guid: afc417a1d2b556d4689b69b56daca804, type: 2}
       propertyPath: m_LocalRotation.w
       value: .707106829
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: afc417a1d2b556d4689b69b56daca804, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afc417a1d2b556d4689b69b56daca804, type: 2}
