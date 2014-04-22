@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 public class PlatformManager : MonoBehaviour {
 	
-	public Transform prefab;
+	public Transform prefab, trigger;
 	public int numberOfObjects;
 	public int recycleOffset;
-	public Vector3 startPosition, nextPosition, platformSize, currentDirection, prevDirection;
+	public Vector3 startPosition, nextPosition, platformSize, currentDirection, prevDirection, triggerPosition;
 	public GameObject runner;
 	public CoinManager coinManager;
 
@@ -68,7 +68,16 @@ public class PlatformManager : MonoBehaviour {
 
 		if(prevDirection != currentDirection && turnCount == 0){
 			nextPosition -= prevDirection * o.localScale.z/2;
+
+			Transform t1 = (Transform)Instantiate(trigger);
+			t1.localPosition = nextPosition;
+
 			nextPosition += prevDirection * o.localScale.x/2;
+
+			triggerPosition = nextPosition + currentDirection * o.localScale.x/2;
+			Transform t2 = (Transform)Instantiate(trigger);
+			t2.localPosition = triggerPosition;
+
 			nextPosition += currentDirection * (o.localScale.z/2 - o.localScale.x/2);
 			o.localPosition = nextPosition;
 			coinManager.Spawn (o.localPosition);
