@@ -16,6 +16,9 @@ public class BasicMovementForEthan : MonoBehaviour
 	private Animator anim;              // Reference to the animator component.
 	private HashIDs hash;  				// Reference to the HashIDs.
 	//private bool touchingPlatform;
+
+
+	public bool KinectJump = false;
 	
 	void Awake ()
 	{
@@ -89,17 +92,25 @@ public class BasicMovementForEthan : MonoBehaviour
 */
 
 		//perform jump and the animation
-		if (Input.GetButton("Jump") == true)
+		if ((Input.GetButton("Jump") == true)||(KinectJump==true))
 		{
 			anim.SetBool(hash.jumpBool, true);
+			//collider.isTrigger = true;
+			//Invoke("TriggerOff", 2);
 
 		}
 		else anim.SetBool(hash.jumpBool, false);
 
 
+
 	}
-	
-	
+	void TriggerOff(){
+		//collider.isTrigger = false;
+
+	}
+
+
+
 	void Rotating (float horizontal, float vertical)
 	{
 		// Create a new vector of the horizontal and vertical inputs.
