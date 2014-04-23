@@ -136,13 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1859a383bf6c1745aa2047158e51bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showButtons: 0
+  showButtons: 1
   playButton: {fileID: 2800000, guid: b2ca1c5ae0a12be49a1a165910bbc21c, type: 3}
   showPlayButton: 1
   optionButton: {fileID: 2800000, guid: 1f092f4749ec60946add170eb94e863a, type: 3}
   showOptionButton: 1
   onPlay: 0
   cursorPanel: {fileID: 0}
+  player: {fileID: 0}
+  managers: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b38b580e9f362a48bad136a28b7b225, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bf8efeded750eb46ad374a9bce89dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 1.5
