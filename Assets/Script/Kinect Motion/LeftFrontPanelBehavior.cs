@@ -7,6 +7,7 @@ public class LeftFrontPanelBehavior : MonoBehaviour {
 	public Collider leftHandCollider;
 	public GameObject robot;
 	public KeyMapping kM;
+	public bool on;
 	private float moveSpeed = 5f;
 	
 	
@@ -15,7 +16,7 @@ public class LeftFrontPanelBehavior : MonoBehaviour {
 		//Debug.Log("Left front panel is ready");
 		
 		//get the robot's movespeed
-		
+		on = true;
 		
 		
 	}
@@ -36,7 +37,9 @@ public class LeftFrontPanelBehavior : MonoBehaviour {
 			//Debug.Log("left hand is detected is detect in left hand panel");
 			//robot.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
 			//robot.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-			kM.PositionChanging(false);
+			if(on){
+				kM.PositionChanging(false);
+			}
 		}
 		
 		

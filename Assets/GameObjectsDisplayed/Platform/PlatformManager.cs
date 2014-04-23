@@ -6,7 +6,7 @@ public class PlatformManager : MonoBehaviour {
 	public Transform prefab, trigger;
 	public int numberOfObjects;
 	public int recycleOffset;
-	public Vector3 startPosition, nextPosition, platformSize, currentDirection, prevDirection, triggerPosition;
+	public Vector3 startPosition, nextPosition, platformSize, triggerSize, currentDirection, prevDirection, triggerPosition;
 	public GameObject runner;
 	public CoinManager coinManager;
 
@@ -18,7 +18,7 @@ public class PlatformManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		turnCount = 0;
-		turnLimit = 3;
+		turnLimit = 1;
 		currentDirection = Vector3.forward;
 		prevDirection = currentDirection;
 		startPosition = runner.transform.localPosition;
@@ -26,6 +26,7 @@ public class PlatformManager : MonoBehaviour {
 		Directions = new Vector3[] {currentDirection, Vector3.Cross(currentDirection, Vector3.up), Vector3.Cross(Vector3.up, currentDirection)};
 
 		prefab.localScale = platformSize;
+		trigger.localScale = triggerSize;
 
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		
@@ -70,13 +71,17 @@ public class PlatformManager : MonoBehaviour {
 			nextPosition -= prevDirection * o.localScale.z/2;
 
 			Transform t1 = (Transform)Instantiate(trigger);
-			t1.localPosition = nextPosition;
+			triggerPosition = nextPosition;
+			t1.localPosition = triggerPosition - prevDirection * 5;
+			Debug.Log("trigger1 instantiated");
 
 			nextPosition += prevDirection * o.localScale.x/2;
 
 			triggerPosition = nextPosition + currentDirection * o.localScale.x/2;
 			Transform t2 = (Transform)Instantiate(trigger);
+			t2.rotation = Quaternion.LookRotation(currentDirection);
 			t2.localPosition = triggerPosition;
+			Debug.Log("trigger2 instantiated");
 
 			nextPosition += currentDirection * (o.localScale.z/2 - o.localScale.x/2);
 			o.localPosition = nextPosition;

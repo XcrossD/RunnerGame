@@ -46,35 +46,35 @@ public class KeyMapping : MonoBehaviour {
 	public void PositionChanging(bool inputRight){
 
 		oldPosition = runner.transform.localPosition;
-		Debug.Log (Vector3.Dot(runner.transform.forward, Vector3.forward));
+		//Debug.Log (Vector3.Dot(runner.transform.forward, Vector3.forward));
 		if(runner.rigidbody.velocity[0] == 10 || runner.rigidbody.velocity[0] == -10){
 			if(isRight){
 				newPositionRight = oldPosition;
-				oldPosition.z -= 2.5f;
+				oldPosition.z -= 2.5f * runner.rigidbody.velocity.normalized[0];
 				newPositionLeft = oldPosition;
 			}else if(isLeft){
 				newPositionLeft = oldPosition;
-				oldPosition.z += 2.5f;
+				oldPosition.z += 2.5f * runner.rigidbody.velocity.normalized[0];
 				newPositionRight = oldPosition;
 			}else{
-				oldPosition.z += 2.5f;
+				oldPosition.z += 2.5f * runner.rigidbody.velocity.normalized[0];
 				newPositionRight = oldPosition;
-				oldPosition.z -= 5f;
+				oldPosition.z -= 5f * runner.rigidbody.velocity.normalized[0];
 				newPositionLeft = oldPosition;
 			}
 		}else{
 			if(isRight){
 				newPositionRight = oldPosition;
-				oldPosition.x -= 2.5f;
+				oldPosition.x -= 2.5f * runner.rigidbody.velocity.normalized[2];
 				newPositionLeft = oldPosition;
 			}else if(isLeft){
 				newPositionLeft = oldPosition;
-				oldPosition.x += 2.5f;
+				oldPosition.x += 2.5f * runner.rigidbody.velocity.normalized[2];
 				newPositionRight = oldPosition;
 			}else{
-				oldPosition.x += 2.5f;
+				oldPosition.x += 2.5f * runner.rigidbody.velocity.normalized[2];
 				newPositionRight = oldPosition;
-				oldPosition.x -= 5f;
+				oldPosition.x -= 5f * runner.rigidbody.velocity.normalized[2];
 				newPositionLeft = oldPosition;
 			}
 		}
@@ -115,13 +115,13 @@ public class KeyMapping : MonoBehaviour {
 		if(runner.rigidbody.velocity[0] == 10 || runner.rigidbody.velocity[0] == -10){
 			Vector3 temp = runner.transform.localPosition;
 			temp.z = pM.nextPosition.z;
-			runner.transform.localPosition = temp;
+			runner.rigidbody.MovePosition(temp);
 			isRight = false;
 			isLeft = false;
 		}else{
 			Vector3 temp = runner.transform.localPosition;
 			temp.x = pM.nextPosition.x;
-			runner.transform.localPosition = temp;
+			runner.rigidbody.MovePosition(temp);
 			isRight = false;
 			isLeft = false;
 		}

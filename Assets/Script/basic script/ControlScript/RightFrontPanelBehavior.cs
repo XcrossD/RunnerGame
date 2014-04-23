@@ -7,11 +7,13 @@ public class RightFrontPanelBehavior : MonoBehaviour {
 	public Collider leftHandCollider;
 	public GameObject robot;
 	public KeyMapping kM;
+	public bool on;
 	private float moveSpeed =5f;
 	
 	// Use this for initialization
 	void Start () {
 		//Debug.Log("right front panel is ready");
+		on = true;
 	}
 	
 	// Update is called once per frame
@@ -25,7 +27,9 @@ public class RightFrontPanelBehavior : MonoBehaviour {
 			//Debug.Log("right hand is detected is detect in right hand panel");
 			//robot.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 			//robot.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-			kM.PositionChanging(true);
+			if(on){
+				kM.PositionChanging(true);
+			}
 		}
 		
 		if (handCollider.name == leftHandCollider.name){

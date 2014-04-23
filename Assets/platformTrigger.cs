@@ -12,7 +12,7 @@ public class platformTrigger : MonoBehaviour {
 		rightFrontPanel = GameObject.Find("Right Front Panel");
 		leftFrontPanel = GameObject.Find ("Left Front Panel");
 		crossCutPanel = GameObject.Find ("Cross Cut Panel");
-		crossCutPanel.GetComponent<CrossCutModified>().enabled = false;
+		//Debug.Log ("crosscut" + crossCutPanel.GetComponent<CrossCutModified>().on);
 	}
 	
 	// Update is called once per frame
@@ -22,19 +22,19 @@ public class platformTrigger : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-
-		if(crossCutPanel.GetComponent<CrossCutModified>().enabled){
-			rightFrontPanel.GetComponent<RightFrontPanelBehavior>().enabled = true;
-			leftFrontPanel.GetComponent<LeftFrontPanelBehavior>().enabled = true;
-			crossCutPanel.GetComponent<CrossCutModified>().enabled = false;
-			GameObject.Destroy(gameObject, 0f);
-		}else{
-			rightFrontPanel.GetComponent<RightFrontPanelBehavior>().enabled = false;
-			leftFrontPanel.GetComponent<LeftFrontPanelBehavior>().enabled = false;
-			crossCutPanel.GetComponent<CrossCutModified>().enabled = true;
-			GameObject.Destroy(gameObject, 0f);
+		if (other.tag == "GameController"){
+			if(crossCutPanel.GetComponent<CrossCutModified>().on){
+				rightFrontPanel.GetComponent<RightFrontPanelBehavior>().on = true;
+				leftFrontPanel.GetComponent<LeftFrontPanelBehavior>().on = true;
+				crossCutPanel.GetComponent<CrossCutModified>().on = false;
+				GameObject.Destroy(gameObject, 0f);
+			}else{
+				rightFrontPanel.GetComponent<RightFrontPanelBehavior>().on = false;
+				leftFrontPanel.GetComponent<LeftFrontPanelBehavior>().on = false;
+				crossCutPanel.GetComponent<CrossCutModified>().on = true;
+				GameObject.Destroy(gameObject, 0f);
+			}
 		}
-
 	}
 
 }

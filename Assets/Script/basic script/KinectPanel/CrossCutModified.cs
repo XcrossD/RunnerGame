@@ -16,6 +16,8 @@ public class CrossCutModified : MonoBehaviour {
 	public Collider rightHandCollider;
 	public Collider leftHandCollider;
 
+	public bool on;
+
 	public KeyMapping kM;
 
 	
@@ -24,6 +26,8 @@ public class CrossCutModified : MonoBehaviour {
 	{
 		//leftHand = GameObject.Find("left_hand");
 		//rightHand = GameObject.Find("right_hand");
+		on = false;
+
 	}
 
 	
@@ -68,7 +72,9 @@ public class CrossCutModified : MonoBehaviour {
 		if (distance > 1f)
 		{
 			//runner.transform.Rotate(Vector3.up, -90);
-			kM.RotationChanging(false);
+			if(on){
+				kM.RotationChanging(false);
+			}
 		}
 	}
 
@@ -78,7 +84,9 @@ public class CrossCutModified : MonoBehaviour {
 		if (distance > 1f)
 		{
 			//runner.transform.Rotate(Vector3.up, 90);
-			kM.RotationChanging(true);
+			if(on){
+				kM.RotationChanging(true);
+			}
 		}
 
 

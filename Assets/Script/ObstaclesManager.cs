@@ -5,13 +5,15 @@ public class ObstaclesManager : MonoBehaviour {
 
 	public PlatformManager pM;
 	public GameObject runner;
-	public Transform trunk;
+	public Transform ob1, ob2, ob3, ob4;
 	public float time, timeTime;
 	public Vector3 location;
+	public Transform[] ob;
 
 	// Use this for initialization
 	void Start () {
 		time = 0f;
+		ob = new Transform[] {ob1, ob2, ob3, ob4};
 	}
 	
 	// Update is called once per frame
@@ -26,10 +28,10 @@ public class ObstaclesManager : MonoBehaviour {
 
 	private void appear(){
 		location = runner.transform.localPosition;
-		location.y += 5.0f;
+		//location.y += 1.0f;
 
 		location += pM.currentDirection * 25f;
-		Transform o = (Transform)Instantiate(trunk);
+		Transform o = (Transform)Instantiate(ob[Random.Range(0,4)]);
 		o.transform.localPosition = location;
 	}
 }
