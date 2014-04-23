@@ -18,7 +18,7 @@ public class HashIDs : MonoBehaviour
 	public int openBool;
 	public int jumpBool;
 	
-	
+
 	void Awake ()
 	{
 		dyingState = Animator.StringToHash("Base Layer.Dying");

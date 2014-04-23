@@ -46,6 +46,7 @@ public class TrunkBehavior : MonoBehaviour {
 			{
 				//Killer the player
 				anim.SetBool(hash.deadBool, true);
+				Invoke("Kill", 0.2f);
 			}
 
 
@@ -54,19 +55,27 @@ public class TrunkBehavior : MonoBehaviour {
 
 	}
 
+	void Kill(){
+		//kill the player without repeating the dead bool checked
+		anim.SetBool(hash.deadBool, false);
+
+
+	}
+	/*
 	void OnTriggerStay(Collider others){
 		// If the colliding gameobject is the player...
 		if(others.gameObject.tag == "GameController")
 		{
 			hash = others.GetComponent<HashIDs>();
 			anim = others.GetComponent<Animator>();
-			//Killer the player
+			//finish Killing the player
 			anim.SetBool(hash.deadBool, false);
 			
 			
 			
 		}
 	}
+	*/
 
 	/*
 	void OnTriggerExit(Collider others){

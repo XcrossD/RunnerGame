@@ -7,7 +7,7 @@ public class gameoverBehavior : MonoBehaviour {
 	private Animator anim;       // Reference to the animator component.
 	private HashIDs hash;  		// Reference to the HashIDs.
 	private BasicMovementForEthan moveScript;
-	public GameObject Manager;
+	//public GameObject Manager;
 	
 	void Awake ()
 	{

@@ -5,7 +5,10 @@ public class SceneFadeInOut : MonoBehaviour
 {
     public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
     private bool sceneStarting = true;      // Whether or not the scene is still fading in.
-        
+     
+
+	public int resetTime =2;
+
     void Awake ()
     {
         // Set the texture so that it is the the size of the screen and covers it.
@@ -62,7 +65,7 @@ public class SceneFadeInOut : MonoBehaviour
         // Start fading towards black.
         FadeToBlack();
         
-		Invoke("ResetScene", 2);
+		Invoke("ResetScene", resetTime);
 		/*
         // If the screen is almost black...
         if(guiTexture.color.a >= 0.95f)
