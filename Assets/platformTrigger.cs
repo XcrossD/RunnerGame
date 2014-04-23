@@ -12,7 +12,7 @@ public class platformTrigger : MonoBehaviour {
 		rightFrontPanel = GameObject.Find("Right Front Panel");
 		leftFrontPanel = GameObject.Find ("Left Front Panel");
 		crossCutPanel = GameObject.Find ("Cross Cut Panel");
-		crossCutPanel.SetActive(false);
+		crossCutPanel.GetComponent<CrossCutModified>().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -22,16 +22,16 @@ public class platformTrigger : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("ethan collided");
-		if(rightFrontPanel.activeSelf){
-			rightFrontPanel.SetActive(true);
-			leftFrontPanel.SetActive(true);
-			crossCutPanel.SetActive(false);
+
+		if(crossCutPanel.GetComponent<CrossCutModified>().enabled){
+			rightFrontPanel.GetComponent<RightFrontPanelBehavior>().enabled = true;
+			leftFrontPanel.GetComponent<LeftFrontPanelBehavior>().enabled = true;
+			crossCutPanel.GetComponent<CrossCutModified>().enabled = false;
 			GameObject.Destroy(gameObject, 0f);
 		}else{
-			rightFrontPanel.SetActive(false);
-			leftFrontPanel.SetActive(false);
-			crossCutPanel.SetActive(true);
+			rightFrontPanel.GetComponent<RightFrontPanelBehavior>().enabled = false;
+			leftFrontPanel.GetComponent<LeftFrontPanelBehavior>().enabled = false;
+			crossCutPanel.GetComponent<CrossCutModified>().enabled = true;
 			GameObject.Destroy(gameObject, 0f);
 		}
 

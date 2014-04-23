@@ -9,9 +9,12 @@ public class CrossCutModified : MonoBehaviour {
 	public Vector3 rightHandPosEnter;
 	public Vector3 rightHandPosExit;
 
-	public GameObject leftHand;
-	public GameObject rightHand;
+	//public GameObject leftHand;
+	//public GameObject rightHand;
 	public GameObject runner;
+
+	public Collider rightHandCollider;
+	public Collider leftHandCollider;
 
 	public KeyMapping kM;
 
@@ -19,8 +22,8 @@ public class CrossCutModified : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		leftHand = GameObject.Find("left_hand");
-		rightHand = GameObject.Find("right_hand");
+		//leftHand = GameObject.Find("left_hand");
+		//rightHand = GameObject.Find("right_hand");
 	}
 
 	
@@ -28,13 +31,13 @@ public class CrossCutModified : MonoBehaviour {
 	//get the hand collider enter the panel
 	void OnTriggerEnter(Collider hand)
 	{
-		if (hand.name == leftHand.name)
+		if (hand.name == leftHandCollider.name)
 		{
 			leftHandPosEnter= hand.transform.position;
 			
 		}
 
-		if (hand.name == rightHand.name)
+		if (hand.name == rightHandCollider.name)
 		{
 			rightHandPosEnter= hand.transform.position;
 			
@@ -46,12 +49,12 @@ public class CrossCutModified : MonoBehaviour {
 	//get the hand collider exit the panel
 	void OnTriggerExit(Collider hand)
 	{
-		if (hand.name == leftHand.name)
+		if (hand.name == leftHandCollider.name)
 		{
 			leftHandPosExit= hand.transform.position;
 			RotateLeft();
 		}
-		if (hand.name == rightHand.name)
+		if (hand.name == rightHandCollider.name)
 		{
 			rightHandPosExit= hand.transform.position;
 			RotateRight();
