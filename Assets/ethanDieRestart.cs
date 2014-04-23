@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ethanDieGameRestart : MonoBehaviour {
-
-
+public class ethanDieRestart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +10,6 @@ public class ethanDieGameRestart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+	
 	}
 }
