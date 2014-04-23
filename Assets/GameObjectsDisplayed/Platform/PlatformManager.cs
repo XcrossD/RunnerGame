@@ -65,7 +65,6 @@ public class PlatformManager : MonoBehaviour {
 			
 		Transform o = objectQueue.Dequeue();
 		o.rotation = Quaternion.LookRotation(currentDirection);
-		Debug.Log ("Platform nextposition" + nextPosition);
 
 		if(prevDirection != currentDirection && turnCount == 0){
 			nextPosition -= prevDirection * o.localScale.z/2;
