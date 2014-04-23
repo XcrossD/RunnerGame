@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class ScoreDisplay : MonoBehaviour {
-	
-	static int moneyCount =0;
+
 	public GameObject user;
-	public int score = 0;
+	public int cash = 0;
+	public int oldcoin = 0;
 	
 	// Use this for initialization
 	void Start () {	
@@ -19,9 +19,24 @@ public class ScoreDisplay : MonoBehaviour {
 	}
 	
 	void ScoreChange(){
-		moneyCount = user.GetComponent<CoinCount>().money*100;
-		gameObject.guiText.text = "Score: "+moneyCount;
-		score = moneyCount;
+
+		CoinCount temp = user.GetComponent<CoinCount>();
+		if (oldcoin != temp.money){
+
+			if (temp.money < 0){
+				cash += 100* temp.multiplier;
+
+
+			}
+			else cash += temp.money*100* temp.multiplier;
+			
+			gameObject.guiText.text = "Score: "+ cash;
+
+			oldcoin = temp.money;
+
+		}
+
+
 	}
 	
 }

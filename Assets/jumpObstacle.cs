@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class fixedObstacle : MonoBehaviour {
-
+public class jumpObstacle : MonoBehaviour {
+	
 	private Animator anim;              // Reference to the animator component.
 	private HashIDs hash;  				// Reference to the HashIDs.
 	
-
+	
 	// Update is called once per frame
 	void Update () {
 	}
@@ -17,13 +17,16 @@ public class fixedObstacle : MonoBehaviour {
 		{
 			hash = others.GetComponent<HashIDs>();
 			anim = others.GetComponent<Animator>();
-
+			
+			//check jump
+			if (anim.GetBool(hash.jumpBool)==false)
+			{
 				//Killer the player
 				anim.SetBool(hash.deadBool, true);
 				Invoke("Kill", 0.2f);
-
+			}
+		}
 		
-	}
 	}
 	
 	void Kill(){
