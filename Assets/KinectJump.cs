@@ -33,11 +33,8 @@ public class KinectJump : MonoBehaviour {
 	}
 	
 	//command from the hand detection
-	void OnTriggerEnter(Collider other){
-		Debug.Log("knee "+kneeCollider.name);
-		Debug.Log("other's "+other.name);
+	void OnTriggerStay(Collider other){
 		if (other.name == kneeCollider.name){
-			Debug.Log("knee collidor is detected in Jump panel");
 			robot.GetComponent<BasicMovementForEthan>().KinectJump=true;
 
 			//robot.GetComponent<Animator>().SetBool(hash.jumpBool, true);
